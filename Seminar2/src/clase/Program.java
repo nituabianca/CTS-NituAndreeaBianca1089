@@ -6,14 +6,16 @@ import java.util.List;
 public class Program {
 
     public static void main(String[] args) {
-        List<Aplicant> angajati;
-        AngajatiReader readerAngajati = new AngajatiReader();
+        List<Aplicant> listaAngajati;
+        ReaderAplicants readerAngajati=new AngajatiReader();
         try {
-            angajati = readerAngajati.citireAplicants("Fisiere/angajati.txt");
-            for (Aplicant angajat : angajati)
+            listaAngajati = readerAngajati.citireAplicanti("angajati.txt");
+            for (Aplicant angajat : listaAngajati){
+                angajat.afisareSalariuZilnic(1000);
+                angajat.afisareStatut();
                 System.out.println(angajat.toString());
+            }
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

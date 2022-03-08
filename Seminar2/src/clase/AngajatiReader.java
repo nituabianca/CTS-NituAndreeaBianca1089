@@ -6,26 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AngajatiReader implements AplicantiReader {
+public class AngajatiReader implements ReaderAplicants {
     @Override
-    public List<Aplicant> citireAplicants(String numeFisier) throws FileNotFoundException {
-        Scanner input2 = new Scanner(new File(numeFisier));
-        input2.useDelimiter(",");
+    public List<Aplicant> citireAplicanti(String numeFisier) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(numeFisier));
+        scanner.useDelimiter(",");
+        List<Aplicant> angajati = citireAplicantiDinScanner(scanner);
+        scanner.close();
+        return angajati;
+    }
+
+    private List<Aplicant> citireAplicantiDinScanner(Scanner scanner){
         List<Aplicant> angajati = new ArrayList<Aplicant>();
-
-        while (input2.hasNext()) {
-            Angajat angajatNou = new Angajat();
-
-            AplicantReader.citireAplicant(input2, angajatNou);
-
-            int salariu = input2.nextInt();
-            String ocupatie = input2.next();
-            angajatNou.setSalariu(salariu);
-            angajatNou.setOcupatie(ocupatie);
-
-            angajati.add(angajatNou);
+        while (scanner.hasNext()) {
+            Angajat a1=new Angajat();
+            AplicantReader.citireAplicant(scanner,a1);
+            int salariu = scanner.nextInt();
+            String ocupatie = scanner.next();
+            a1.setSalariu(salariu);
+            a1.setOcupatie(ocupatie);
+            angajati.add(a1);
         }
-        input2.close();
         return angajati;
     }
 }

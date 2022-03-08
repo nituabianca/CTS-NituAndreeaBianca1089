@@ -6,27 +6,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentiReader implements AplicantiReader {
+public class StudentiReader implements ReaderAplicants{
     @Override
-    public List<Aplicant> citireAplicants(String numeFisier) throws FileNotFoundException {
+    public List<Aplicant> citireAplicanti(String numeFisier) throws FileNotFoundException {
         Scanner input = new Scanner(new File(numeFisier));
-        input.useDelimiter(",|\n");
-        List<Aplicant> studenti = new ArrayList<Aplicant>();
-
-        while (input.hasNext()) {
-            Student studentNou = new Student();
-
-            AplicantReader.citireAplicant(input, studentNou);
-
-            int an_studii = input.nextInt();
-            String facultate = (input.next()).toString();
-
-            studentNou.setAn_studii(an_studii);
-            studentNou.setFacultate(facultate);
-
-            studenti.add(studentNou);
-        }
+        input.useDelimiter(",");
+        List<Aplicant> studenti = new ArrayList<>();
         input.close();
+        return studenti;
+    }
+
+    private List<Aplicant> citireAplicantiDinScanner(Scanner scanner){
+        List<Aplicant> studenti = citireAplicantiDinScanner(scanner);
+
+        while (scanner.hasNext()) {
+
+            Student s=new Student();
+            AplicantReader.citireAplicant(scanner,s);
+            int an_studii = scanner.nextInt();
+            String facultate = (scanner.next()).toString();
+            s.setFacultate(facultate);
+            s.setAnStudii(an_studii);
+            studenti.add(s);
+        }
         return studenti;
     }
 }
