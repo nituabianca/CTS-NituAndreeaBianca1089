@@ -1,5 +1,5 @@
 package clase;
 
-public class ModalitatePlata {
-
+public interface ModalitatePlata {
+	public void plateste(float sumaDePlata);
 }
