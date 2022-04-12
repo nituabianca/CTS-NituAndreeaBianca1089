@@ -1,5 +1,6 @@
 package composite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Flota implements Nod{
@@ -9,6 +10,7 @@ public class Flota implements Nod{
 	
 	public Flota(String nume) {
 		this.nume = nume;
+		this.noduri=new ArrayList<>();
 		
 	}
 	@Override
