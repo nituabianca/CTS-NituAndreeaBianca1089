@@ -21,6 +21,7 @@ public class MementoAutobuz {
 		this.consumMediu = consumMediu;
 	}
 	
+	
 
 	
 }

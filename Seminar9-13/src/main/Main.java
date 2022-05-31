@@ -11,12 +11,12 @@ public class Main {
 
 		
 		ManagerMemento manager=new ManagerMemento();
-		manager.addmemento(autobuz.creeazaMemento());
+		manager.addMemento(autobuz.creeazaMemento());
 		
 		autobuz.setConsumMediu(14.9);
 		autobuz.setNumeSofer("Johnny");
 		
-		manager.addmemento(autobuz.creeazaMemento());
+		manager.addMemento(autobuz.creeazaMemento());
 		
 		System.out.println(autobuz.toString());
 		autobuz.setNumeSofer("ION");
